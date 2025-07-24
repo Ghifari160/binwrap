@@ -1,0 +1,56 @@
+{
+  "name": "@ghifari160/binwrap",
+  "version": "0.1.0",
+  "description": "Wrap executable binary for distribution on NPM",
+  "license": "MIT",
+  "author": "GHIFARI160",
+  "main": "mjs/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ghifari160/binwrap.git"
+  },
+  "keywords": [
+    "binwrap",
+    "binary"
+  ],
+  "bugs": {
+    "url": "https://github.com/ghifari160/binwrap"
+  },
+  "homepage": "https://github.com/ghifari160/binwrap#readme",
+  "files": [
+    "cjs",
+    "LICENSE",
+    "mjs",
+    "package.json",
+    "README.md",
+    "src",
+    "tsconfig.json",
+    "tsconfig.cjs.json",
+    "tsconfig.mjs.json"
+  ],
+  "scripts": {
+    "build": "npm run clean && npm run build:mjs && npm run build:cjs",
+    "clean": "del-cli cjs lib mjs",
+
+    "build:mjs": "npm run build:mjs:ts && npm run build:mjs:transform",
+    "build:mjs:ts": "tsc -d -p tsconfig.mjs.json",
+    "build:mjs:transform": "mjscjs -p tsconfig.mjs.json",
+
+    "build:cjs": "npm run build:cjs:ts && npm run build:cjs:transform",
+    "build:cjs:ts": "tsc -d -p tsconfig.cjs.json",
+    "build:cjs:transform": "mjscjs -p tsconfig.cjs.json"
+  },
+  "devDependencies": {
+    "@types/node": "^24.1.0",
+    "cross-env": "^7.0.3",
+    "del-cli": "^6.0.0",
+    "mjscjs": "^1.1.0",
+    "ts-node": "^10.9.2",
+    "tslib": "^2.8.1",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "execa": "^9.6.0",
+    "tar": "^7.4.3"
+  }
+}
