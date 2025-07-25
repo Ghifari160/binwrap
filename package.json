@@ -7,7 +7,7 @@
   "main": "mjs/index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ghifari160/binwrap.git"
+    "url": "git+https://github.com/Ghifari160/binwrap.git"
   },
   "keywords": [
     "binwrap",
