@@ -15,9 +15,12 @@ jobs:
       tag-name: ${{ steps.get_vars.outputs.TAG_NAME }}
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-go@v5
-      - name: Install Changelog
-        run: go install github.com/ghifari160/changelog@0.3.0
+      - uses: actions/setup-node@v4
+        with:
+          cache: "npm"
+          registry-url: "https://registry.npmjs.org"
+      - name: Install dependencies
+        run: npm ci
       - name: Setup variables
         id: get_vars
         run: |
@@ -40,7 +43,7 @@ jobs:
         run: |
           echo "$RELEASE_BODY" >> RELEASE.md
           echo "## Changelog" >> RELEASE.md
-          changelog get -v $VERSION_ID >> RELEASE.md
+          npx changelog get -v $VERSION_ID >> RELEASE.md
       - name: Update release
         uses: Wandalen/wretry.action@v3
         with:

@@ -47,6 +47,7 @@
     "build:cjs:transform": "mjscjs -p tsconfig.cjs.json"
   },
   "devDependencies": {
+    "@ghifari160/changelog": "^0.3.1",
     "@types/node": "^24.1.0",
     "cross-env": "^7.0.3",
     "del-cli": "^6.0.0",
