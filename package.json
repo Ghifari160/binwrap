@@ -1,6 +1,6 @@
 {
   "name": "@ghifari160/binwrap",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Wrap executable binary for distribution on NPM",
   "license": "MIT",
   "author": "GHIFARI160",
