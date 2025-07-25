@@ -17,6 +17,12 @@
     "url": "https://github.com/ghifari160/binwrap"
   },
   "homepage": "https://github.com/ghifari160/binwrap#readme",
+  "exports": {
+    ".": {
+      "import": "./mjs/index.mjs",
+      "require": "./cjs/index.cjs"
+    }
+  },
   "files": [
     "cjs",
     "LICENSE",
