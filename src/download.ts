@@ -1,8 +1,9 @@
 import fs from "fs";
 import { pipeline } from "stream/promises";
 
+import { getType } from "./file_types";
 import { tempFileTask } from "./tempfile";
-import { extract } from "./unarchive";
+import { type ArchiveFormat, extract } from "./unarchive";
 
 /**
  * Downloads a file `url` to `dest`.
@@ -33,6 +34,23 @@ export async function download(url: string, dest: string) {
 export async function downloadAndExtract(url: string, dest: string) {
     await tempFileTask(async temp => {
         await download(url, temp);
-        await extract(temp, dest, "tar");
+
+        const mime = await getType(temp);
+        let format: ArchiveFormat;
+        switch(mime) {
+        case "application/gzip":
+        case "application/x-bzip2":
+            format = "tar";
+            break;
+
+        case "application/zip":
+            format = "zip";
+            break;
+
+        default:
+            throw new Error(`Unsupported format for ${url}: ${mime}`);
+        }
+
+        await extract(temp, dest, format);
     });
 }

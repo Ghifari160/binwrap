@@ -1,6 +1,7 @@
 import path from "path";
 
 import * as tar from "tar";
+import zip from "extract-zip";
 
 export type ArchiveFormat = |
     "tar" |
@@ -13,6 +14,9 @@ export async function extract(filepath: string, dest: string, format: ArchiveFor
     switch(format) {
     case "tar":
         return extractTar(filepath, dest);
+
+    case "zip":
+        return extractZip(filepath, dest);
 
     default:
         throw new Error(`Unsupported file type: ${path.extname(filepath)}`);
@@ -27,5 +31,14 @@ async function extractTar(filepath: string, dest: string) {
     return tar.extract({
         file: filepath,
         cwd: dest,
+    });
+}
+
+/**
+ * Extracts zip archive from `filepath` to `dest`.
+ */
+async function extractZip(filepath: string, dest: string) {
+    return zip(filepath, {
+        dir: dest,
     });
 }

@@ -11,7 +11,15 @@ THis project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ### Added
 
+- Added `.zip` archive support.
+
 ### Changed
+
+- BinWrap now handles archive format selection based on the magic number of the downloaded archive.
+  Supported archive types are:
+  - `application/gzip` (`.tar.gz`)
+  - `application/x-bzip2` (`.tar.bz2`)
+  - `application/zip` (`.zip`)
 
 ### Deprecated
 

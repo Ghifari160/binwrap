@@ -58,6 +58,7 @@
   },
   "dependencies": {
     "execa": "^9.6.0",
+    "extract-zip": "^2.0.1",
     "tar": "^7.4.3"
   }
 }
