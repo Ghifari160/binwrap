@@ -37,11 +37,10 @@
   "scripts": {
     "build": "npm run clean && npm run build:mjs && npm run build:cjs",
     "clean": "del-cli cjs lib mjs",
-
+    "prepack": "npm run build",
     "build:mjs": "npm run build:mjs:ts && npm run build:mjs:transform",
     "build:mjs:ts": "tsc -d -p tsconfig.mjs.json",
     "build:mjs:transform": "mjscjs -p tsconfig.mjs.json",
-
     "build:cjs": "npm run build:cjs:ts && npm run build:cjs:transform",
     "build:cjs:ts": "tsc -d -p tsconfig.cjs.json",
     "build:cjs:transform": "mjscjs -p tsconfig.cjs.json"
