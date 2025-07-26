@@ -19,6 +19,10 @@ THis project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ### Fixed
 
+- Fixed an issue where transpiled library files are not included in the NPM distribution.
+  Prior versions are still usable, though they require manual building.
+  Navigate to the nearest `node_modules/@ghifari160/binwrap` and execute `npm run build`.
+
 ### Security
 
 ## [0.1.0] - 2025-07-25
